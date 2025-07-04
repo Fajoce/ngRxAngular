@@ -24,7 +24,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrl: './list-products.component.css'
 })
 export class ListProductsComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'price', 'category', 'actions'];
+  displayedColumns: string[] = ['id','name', 'price', 'category', 'actions'];
   products$: Observable<Product[]>;
   error$: Observable<string | null>;
 
