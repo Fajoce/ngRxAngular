@@ -1,11 +1,11 @@
 .form-card {
-  max-width: 420px;
+  max-width: 220px;
   margin: 40px auto;
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
-  background-color: #fff;
+  background-color:blue
 }
 
 .form-content {
