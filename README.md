@@ -11,6 +11,14 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+![image](https://github.com/user-attachments/assets/a71fb8cb-4bd5-473a-bf5a-6c29d19a5065)
+crear producto
+![image](https://github.com/user-attachments/assets/1b7991eb-ee51-44ac-9172-aab6600efee8)
+Actualizar producto
+![image](https://github.com/user-attachments/assets/9b7af091-a070-40e7-a64e-18840b52cad4)
+
+
+
 
 ## Code scaffolding
 
