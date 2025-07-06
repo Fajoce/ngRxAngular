@@ -16,10 +16,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select'; 
 
 import { Product } from '../../models/product';
 import * as ProductActions from '../../store/product/product-action';
 import { selectSelectedProduct } from '../../store/product/product-selector';
+import { Category } from '../../models/category';
+import { CategoryServiceService } from '../../services/category-service.service';
 
 @Component({
   selector: 'app-product-form',
@@ -31,6 +34,8 @@ import { selectSelectedProduct } from '../../store/product/product-selector';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    CommonModule,
+    MatSelectModule
   ],
   templateUrl: './product-form.component.html',
 })
@@ -41,10 +46,12 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private toastr = inject(ToastrService);
   private spinnerService = inject(SpinnerServiceService);
+  private categoryservice = inject(CategoryServiceService)
 
   form: FormGroup;
   productId: number | null = null;
   private destroy$ = new Subject<void>();
+  categories: Category[] = [];
 
   constructor() {
     this.form = this.fb.group({
@@ -55,6 +62,11 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    // Cargar categorías
+    this.categoryservice.getAll().subscribe({
+      next: (cats) => (this.categories = cats),
+      error: (err) => console.error('Error al cargar categorías', err),
+    });
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.productId = +id;

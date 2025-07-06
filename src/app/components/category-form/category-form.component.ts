@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { CategoryServiceService } from '../../services/category-service.service';
 
 import { Category } from '../../models/category';
 import * as CategoryActions from '../../store/category/category-action';
@@ -41,6 +42,7 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private toastr = inject(ToastrService);
   private spinnerService = inject(SpinnerServiceService);
+  private serviceCategory = inject(CategoryServiceService);
 
   form: FormGroup;
   categoryId: number | null = null;
@@ -94,7 +96,7 @@ export class CategoryFormComponent implements OnInit, OnDestroy {
   }
 
   goBack() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/list-category']);
   }
   ngOnDestroy(): void {
     this.destroy$.next();
