@@ -1,4 +1,4 @@
-import { ProductAction } from './product-action';
+import { ProductAction } from '../product-action';
 
 describe('ProductAction', () => {
   it('should create an instance', () => {

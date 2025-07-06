@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
-import { Product } from '../models/product';
-import { ResponseProduct } from '../models/response-product';
+import { Product } from '../../models/product';
+import { ResponseProduct } from '../../models/response-product';
 
 // Cargar todos
 export const loadProducts = createAction('[Product] Load All');

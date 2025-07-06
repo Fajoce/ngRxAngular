@@ -1,7 +1,7 @@
 import { inject,Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { ProductServiceService } from '../services/product-service.service';
-import * as ProductActions from '../store/product-action';
+import { ProductServiceService } from '../../services/product-service.service';
+import * as ProductActions from '../store/../product/product-action';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 

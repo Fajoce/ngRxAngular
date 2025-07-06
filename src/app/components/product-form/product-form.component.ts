@@ -18,8 +18,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { Product } from '../../models/product';
-import * as ProductActions from '../../store/product-action';
-import { selectSelectedProduct } from '../../store/product-selector';
+import * as ProductActions from '../../store/product/product-action';
+import { selectSelectedProduct } from '../../store/product/product-selector';
 
 @Component({
   selector: 'app-product-form',
