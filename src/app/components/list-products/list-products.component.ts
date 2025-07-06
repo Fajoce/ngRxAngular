@@ -5,7 +5,8 @@ import { Product } from '../../models/product';
 import * as ProductActions from '../../store/product-action';
 import * as fromProduct from '../../store/product-selector';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';import { MatTableModule } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -25,29 +26,37 @@ import { MatInputModule } from '@angular/material/input';
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   templateUrl: './list-products.component.html',
-  styleUrl: './list-products.component.css'
+  styleUrl: './list-products.component.css',
 })
 export class ListProductsComponent implements OnInit {
-  displayedColumns: string[] = ['id','name', 'price', 'category', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'price', 'category', 'actions'];
   dataSource = new MatTableDataSource<Product>();
   error$: Observable<string | null>;
   showFilter = false;
+  loading$!: Observable<boolean>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private store: Store, private router: Router) {
     this.error$ = this.store.select(fromProduct.selectProductError);
+    this.loading$ = this.store.select(fromProduct.selectProductLoading);
+    this.loading$.subscribe(value => console.log('loading state:', value));
   }
 
   ngOnInit(): void {
     this.store.dispatch(ProductActions.loadProducts());
 
-    this.store.select(fromProduct.selectAllProducts).subscribe(products => {
+    this.store.select(fromProduct.selectAllProducts).subscribe((products) => {
       this.dataSource.data = products;
       this.dataSource.paginator = this.paginator;
+    });
+    setTimeout(() => {
+      if (this.paginator) {
+        this.dataSource.paginator = this.paginator;
+      }
     });
   }
 

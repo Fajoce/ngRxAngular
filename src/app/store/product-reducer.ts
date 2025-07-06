@@ -6,21 +6,22 @@ export interface ProductState {
   products: Product[];
   selectedProduct: Product | null;
   error: string | null;
+  loading: boolean;
 }
 
 export const initialState: ProductState = {
   products: [],
    selectedProduct: null,
   error: null,
-  
+  loading: false  
 };
 
 export const productReducer = createReducer(
   initialState,
 
   // Cargar productos
-  on(ProductActions.loadProductsSuccess, (state, { products }) => ({ ...state, products })),
-  on(ProductActions.loadProductsFailure, (state, { error }) => ({ ...state, error })),
+  on(ProductActions.loadProductsSuccess, (state, { products }) => ({ ...state, products, loading: false })),
+  on(ProductActions.loadProductsFailure, (state, { error }) => ({ ...state, error,loading: false })),
   on(ProductActions.loadProductByIdSuccess, (state, { product }) => ({
   ...state,
   selectedProduct: product
