@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
             <mat-icon>inventory_2</mat-icon>
             <span class="ms-2">Productos</span>
           </a>
-          <a mat-list-item routerLink="/categories" routerLinkActive="active-link">
+          <a mat-list-item routerLink="/list-category" routerLinkActive="active-link">
             <mat-icon>category</mat-icon>
             <span class="ms-2">Categorías</span>
           </a>
@@ -47,18 +47,17 @@ import { CommonModule } from '@angular/common';
     .sidenav-container {
       height: 100vh;
     }
-
     .sidenav {
       width: 250px;
     }
 
     .main-content {
-      background: #f4f6f9;
+      background:rgba(27, 190, 35, 0.1);
       min-height: 100vh;
     }
 
     .active-link {
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(27, 190, 35, 0.1);
       font-weight: bold;
     }
 

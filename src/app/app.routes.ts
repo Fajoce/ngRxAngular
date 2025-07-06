@@ -5,18 +5,18 @@ import { SidebarLayoutComponent } from './components/sidebar-layout/sidebar-layo
 import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 
-export const routes: Routes = [ 
-    {
+export const routes: Routes = [
+  {
     path: '',
     component: SidebarLayoutComponent,
     children: [
-        { path: '', component: ListProductsComponent },
+      { path: '', component: ListProductsComponent },
       { path: 'list', component: ListProductsComponent },
       { path: 'create', component: ProductFormComponent },
-        { path: 'categories', component: CategoryFormComponent },
-      { path: '', redirectTo: 'list', pathMatch: 'full' },
-       { path: 'edit/:id', component: ProductFormComponent }
+      { path: 'list-category', component: ListCategoriesComponent },
+      { path: 'categories', component: CategoryFormComponent },
+      { path: 'edit/:id', component: ProductFormComponent },
+      { path: '', redirectTo: 'list', pathMatch: 'full' }      
     ],
-  }  
-   
+  },
 ];
