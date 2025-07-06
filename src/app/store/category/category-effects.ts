@@ -42,7 +42,7 @@ createProduct$ = createEffect(() =>
     mergeMap(action =>
       this.categoryService.create(action.category).pipe(
         map(response => {
-          this.toastr.success('Categoria creada exitosamente', 'Éxito'); // 🎯 Aquí sí fue exitoso
+          this.toastr.success('Categoria creada exitosamente', 'Éxito'); 
           return CategoryActions.createCategorySuccess({ response });
         }),
         catchError(error => of(CategoryActions.createCategoryFailure({ error: error.message })))
