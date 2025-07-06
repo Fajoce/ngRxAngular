@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
     template: `
     <mat-sidenav-container class="sidenav-container">
       <mat-sidenav mode="side" opened class="sidenav" fixedInViewport>
-        <mat-toolbar color="primary">📦 Mi Tienda</mat-toolbar>
+        <mat-toolbar color="secondary">📦 Mi Tienda</mat-toolbar>
         <mat-nav-list>
           <a mat-list-item routerLink="/list" routerLinkActive="active-link">
             <mat-icon>inventory_2</mat-icon>
