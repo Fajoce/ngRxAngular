@@ -53,7 +53,7 @@ createProduct$ = createEffect(() =>
   reloadAfterCreate$ = createEffect(() =>
   this.actions$.pipe(
     ofType(CategoryActions.createCategorySuccess),
-    map(() => CategoryActions.loadCategories()) // 👈 recarga lista
+    map(() => CategoryActions.loadCategories()) 
   )
 );
 
