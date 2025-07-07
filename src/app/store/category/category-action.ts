@@ -1,11 +1,17 @@
 import { createAction, props } from '@ngrx/store';
 import { Category } from '../../models/category';
+import { Report } from '../../models/report';
 import { ResponseCategory } from '../../models/response-category';
 
 // Cargar todos
 export const loadCategories = createAction('[Category] Load All');
 export const loadCategoriesSuccess = createAction('[Category] Load All Success', props<{ categories: Category[] }>());
 export const loadCategoriesFailure = createAction('[Category] Load All Failure', props<{ error: string }>());
+// Cargar reporte
+export const loadCategoriaReporte = createAction('[Report] Load All');
+export const loadCategoriaReportSuccess = createAction('[Report] Load All Success', props<{ report: Report[] }>());
+export const loadCategoriaReportFailure = createAction('[Report] Load All Failure', props<{ error: string }>());
+
 // ver por Id
 export const loadCategoryById = createAction('[Category] Load By Id', props<{ id: number }>());
 export const loadCategoryByIdSuccess = createAction('[Category] Load By Id Success', props<{ category: Category }>());

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Category } from '../models/category';
+import { Report } from '../models/report';
 import { Observable } from 'rxjs';
 import { ResponseCategory } from '../models/response-category';
 
@@ -14,6 +15,10 @@ export class CategoryServiceService {
 
    getAll(): Observable<Category[]> {
     return this.http.get<Category[]>(this.apiUrl+'/all');
+  }
+
+   getReport(): Observable<Report[]> {
+    return this.http.get<Report[]>(this.apiUrl+'/report');
   }
 
    getById(id: number): Observable<Category> {   

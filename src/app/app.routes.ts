@@ -4,6 +4,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { SidebarLayoutComponent } from './components/sidebar-layout/sidebar-layout.component';
 import { ListCategoriesComponent } from './components/list-categories/list-categories.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
+import { ReportComponent } from './components/report/report.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
       { path: 'create', component: ProductFormComponent },
       { path: 'list-category', component: ListCategoriesComponent },
       { path: 'categories', component: CategoryFormComponent },
+       { path: 'report', component: ReportComponent },
       { path: 'edit/:id', component: ProductFormComponent },
       { path: '', redirectTo: 'list', pathMatch: 'full' }      
     ],

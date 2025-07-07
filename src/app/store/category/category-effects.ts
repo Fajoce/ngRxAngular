@@ -23,6 +23,17 @@ export class CategoryEffects {
       )
     )
   );
+    loadReport$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CategoryActions.loadCategoriaReporte),
+      mergeMap(() =>
+        this.categoryService.getReport().pipe(
+          map(report => CategoryActions.loadCategoriaReportSuccess({ report })),
+          catchError(error => of(CategoryActions.loadCategoriaReportFailure({ error: error.message })))
+        )
+      )
+    )
+  );
 
 loadProductById$ = createEffect(() =>
   this.actions$.pipe(
