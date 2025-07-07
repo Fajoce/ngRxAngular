@@ -53,7 +53,7 @@ createProduct$ = createEffect(() =>
     mergeMap(action =>
       this.categoryService.create(action.category).pipe(
         map(response => {
-          this.toastr.success('Categoria creada exitosamente', 'Éxito'); // 🎯 Aquí sí fue exitoso
+          this.toastr.success('Categoria creada exitosamente', 'Éxito'); 
           return CategoryActions.createCategorySuccess({ response });
         }),
         catchError(error => of(CategoryActions.createCategoryFailure({ error: error.message })))
@@ -64,7 +64,7 @@ createProduct$ = createEffect(() =>
   reloadAfterCreate$ = createEffect(() =>
   this.actions$.pipe(
     ofType(CategoryActions.createCategorySuccess),
-    map(() => CategoryActions.loadCategories()) // 👈 recarga lista
+    map(() => CategoryActions.loadCategories()) 
   )
 );
 
@@ -82,7 +82,7 @@ createProduct$ = createEffect(() =>
   reloadAfterUpdate$ = createEffect(() =>
   this.actions$.pipe(
     ofType(CategoryActions.updateCategorySuccess),
-    map(() => CategoryActions.loadCategories()) // 👈 recarga lista
+    map(() => CategoryActions.loadCategories()) 
   )
 );
 
