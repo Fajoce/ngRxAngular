@@ -1,0 +1,57 @@
+<mat-card>
+  <mat-card-title>🧾 Crear Factura</mat-card-title>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline" class="w-100 mb-3">
+      <mat-label>ID del Cliente</mat-label>
+      <input matInput formControlName="clientsId" placeholder="Ej: 1, 2, 3..." />
+    </mat-form-field>
+
+    <div formArrayName="details">
+      <div *ngFor="let group of details.controls; let i = index" [formGroupName]="i" class="mb-4 border p-3 rounded bg-light">
+        
+        <mat-form-field class="w-100">
+          <mat-label>ID Producto</mat-label>
+          <input matInput formControlName="productId" placeholder="Ej: 101" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100">
+          <mat-label>Nombre del Producto</mat-label>
+          <input matInput formControlName="productName" placeholder="Ej: Monitor" />
+        </mat-form-field>
+
+        <div class="d-flex gap-3">
+          <mat-form-field>
+            <mat-label>Cantidad</mat-label>
+            <input type="number" matInput formControlName="quantity" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Precio Unitario</mat-label>
+            <input type="number" matInput formControlName="unitPrice" />
+          </mat-form-field>
+
+          <div class="align-self-center">
+            <strong>Subtotal: </strong>
+            {{ calculateSubtotal(group.value.quantity, group.value.unitPrice) | currency:'COP' }}
+          </div>
+
+          <button mat-icon-button color="warn" (click)="removeDetail(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <button mat-button color="primary" (click)="addDetail()" type="button">
+      <mat-icon>add</mat-icon> Agregar producto
+    </button>
+
+    <div class="mt-4">
+      <h3>Total: {{ getTotal() | currency:'COP' }}</h3>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" class="mt-3">
+      Guardar Factura
+    </button>
+  </form>
+</mat-card>

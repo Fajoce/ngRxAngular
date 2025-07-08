@@ -30,6 +30,10 @@ import { CommonModule } from '@angular/common';
             <mat-icon>category</mat-icon>
             <span class="ms-2">Categorías</span>
           </a>
+           <a mat-list-item routerLink="/invoice" routerLinkActive="active-link">
+            <mat-icon>Invoice</mat-icon>
+            <span class="ms-2">Registro Factura</span>
+          </a>
           <a mat-list-item routerLink="/report" routerLinkActive="active-link">
             <mat-icon>Reporte</mat-icon>
             <span class="ms-2">Reporte</span>
