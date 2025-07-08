@@ -2,6 +2,12 @@
   <mat-card-title>🧾 Crear Factura</mat-card-title>
   <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field appearance="outline" class="w-100 mb-3">
+  <mat-label>Fecha de la venta</mat-label>
+  <input matInput [matDatepicker]="picker" formControlName="saleDate">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+    <mat-form-field appearance="outline" class="w-100 mb-3">
       <mat-label>ID del Cliente</mat-label>
       <input matInput formControlName="clientsId" placeholder="Ej: 1, 2, 3..." />
     </mat-form-field>

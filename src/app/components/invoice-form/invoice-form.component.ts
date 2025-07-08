@@ -10,6 +10,8 @@ import { Store } from '@ngrx/store';
 import { CreateDetailsInvoiceRequest } from '../../models/create-details-invoice-request';
 import { CreateInvoiceRequest } from '../../models/CreateInvoiceRequest';
 import { createInvoice } from '../../store/invoice/invoice-action';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @Component({
@@ -21,7 +23,9 @@ import { createInvoice } from '../../store/invoice/invoice-action';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   templateUrl: './invoice-form.component.html',
   styleUrl: './invoice-form.component.css'
@@ -31,7 +35,7 @@ private fb = inject(FormBuilder);
   private store = inject(Store);
 
   form: FormGroup = this.fb.group({
-    saleDate: [new Date().toISOString(), Validators.required],
+    saleDate: [new Date(), Validators.required],
     clientsId: [null, Validators.required],
     details: this.fb.array([this.createDetailGroup()])
   });
@@ -92,5 +96,9 @@ private fb = inject(FormBuilder);
     };
 
     this.store.dispatch(createInvoice({ invoice }));
+    this.form.reset();
+  this.details.clear(); // Limpiar el FormArray
+  this.details.push(this.createDetailGroup()); // Agregar un grupo por defecto
+  this.form.get('saleDate')?.setValue(new Date().toISOString()); // Reasignar fecha
   }
 }
